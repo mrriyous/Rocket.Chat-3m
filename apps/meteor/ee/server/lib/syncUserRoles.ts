@@ -71,10 +71,10 @@ export async function syncUserRoles(
 		return;
 	}
 
-	const wasGuest = existingRoles.length === 1 && existingRoles[0] === 'guest';
-	if (wasGuest && (await License.shouldPreventAction('activeUsers'))) {
-		throw new Error('error-license-user-limit-reached');
-	}
+	// const wasGuest = existingRoles.length === 1 && existingRoles[0] === 'guest';
+	// if (wasGuest && (await License.shouldPreventAction('activeUsers'))) {
+	// 	throw new Error('error-license-user-limit-reached');
+	// }
 
 	if (rolesToAdd.length && (await addUserRolesAsync(uid, rolesToAdd, scope))) {
 		broadcastRoleChange('added', rolesToAdd, user);
