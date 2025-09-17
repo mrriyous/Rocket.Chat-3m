@@ -87,11 +87,11 @@ export class OmnichannelQueue implements IOmnichannelQueue {
 				return;
 			}
 
-			// if (await License.shouldPreventAction('monthlyActiveContacts', 1)) {
-			// 	queueLogger.debug('MAC limit reached. Queue wont execute');
-			// 	this.running = false;
-			// 	return;
-			// }
+			if (await License.shouldPreventAction('monthlyActiveContacts', 1)) {
+				queueLogger.debug('MAC limit reached. Queue wont execute');
+				this.running = false;
+				return;
+			}
 
 			// We still go 1 by 1, but we go with every queue every cycle instead of just 1 queue per cycle
 			// And we get tracing :)
