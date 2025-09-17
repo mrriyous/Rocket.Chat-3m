@@ -50,10 +50,10 @@ export class LDAPUserConverter extends UserConverter {
 	async insertUser(userData: IImportUser): Promise<IUser['_id']> {
 		if (!userData.deleted) {
 			// #TODO: Change the LDAP sync process to split the inserts and updates into two stages so that we can validate this only once for all insertions
-			// if (await License.shouldPreventAction('activeUsers')) {
-			// 	logger.warn({ msg: 'Max users allowed reached, creating new LDAP users in inactive state ', username: userData.username });
-			// 	userData.deleted = true;
-			// }
+			if (await License.shouldPreventAction('activeUsers')) {
+				logger.warn({ msg: 'Max users allowed reached, creating new LDAP users in inactive state ', username: userData.username });
+				userData.deleted = true;
+			}
 		}
 
 		return super.insertUser(userData);
