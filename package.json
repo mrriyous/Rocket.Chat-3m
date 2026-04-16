@@ -16,7 +16,6 @@
     "storybook": "yarn workspace @rocket.chat/meteor run storybook",
     "fuselage": "./fuselage.sh",
     "fossify": "TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\"}' ts-node scripts/fossify.ts",
-    "preinstall": "node preinstall.js"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.11",
